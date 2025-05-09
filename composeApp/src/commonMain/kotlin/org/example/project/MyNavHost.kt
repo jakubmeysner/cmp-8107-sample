@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import org.example.project.a.ARoute
 import org.example.project.a.aDestination
 import org.example.project.a.b.BRoute
 import org.example.project.c.cDestination
@@ -37,7 +36,7 @@ fun MyNavHost(navController: NavHostController) {
 
             NavHost(
                 navController = navController,
-                startDestination = ARoute,
+                startDestination = BRoute,
             ) {
                 aDestination()
                 cDestination()
