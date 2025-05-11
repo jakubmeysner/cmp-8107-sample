@@ -7,14 +7,23 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import org.example.project.a.aDestination
-import org.example.project.a.b.BRoute
-import org.example.project.c.cDestination
-import org.example.project.c.d.DRoute
+import androidx.navigation.compose.composable
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 interface Route
+
+@Serializable
+@SerialName("b")
+data object BRoute : Route
+
+@Serializable
+@SerialName("d")
+data object DRoute : Route
+
 
 @Composable
 fun MyNavHost(navController: NavHostController) {
@@ -38,8 +47,13 @@ fun MyNavHost(navController: NavHostController) {
                 navController = navController,
                 startDestination = BRoute,
             ) {
-                aDestination()
-                cDestination()
+                composable<BRoute> {
+                    Text(text = "B screen")
+                }
+
+                composable<DRoute> {
+                    Text(text = "D screen", color = Color.Red)
+                }
             }
         }
     }
